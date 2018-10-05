@@ -2,7 +2,7 @@
 # Cookbook:: chef_vault_retry
 # Library:: helpers
 #
-# Copyright:: 2017, Biola University
+# Copyright:: 2018, Biola University
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ module ChefVaultRetryCookbook
   # If the node doesn't have access to the chef-vault item yet, output a message
   # and retry on a configurable interval
   def chef_vault_retry_item(v, i)
+    require 'chef-vault'
     if ChefVault::Item.vault?(v, i)
       node['chef_vault_retry']['retries'].times do
         begin

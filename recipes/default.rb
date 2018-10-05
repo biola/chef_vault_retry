@@ -2,7 +2,7 @@
 # Cookbook:: chef_vault_retry
 # Recipe:: default
 #
-# Copyright:: 2017, Biola University
+# Copyright:: 2018, Biola University
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,5 +24,3 @@ chef_gem 'chef-vault' do
   clear_sources true unless node['chef_vault_retry']['gem_source'].nil?
   compile_time true
 end
-
-require 'chef-vault'

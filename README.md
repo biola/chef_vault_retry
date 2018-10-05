@@ -19,17 +19,18 @@ See the Usage section below for more details. Similar to the `chef-client` cookb
 
 The following attributes have been duplicated from the `chef-client` cookbook for gem installation:
 
-* `node['chef_vault_retry']['version']` - version of the `chef-client` gem to install; default is `'~> 2.6'`
+* `node['chef_vault_retry']['version']` - version of the `chef-client` gem to install; default is unset and will use the version of chef-vault included with modern versions of Chef
 * `node['chef_vault_retry']['databag_fallback']` - If the vault item passed is a regular data bag item, fall back to loading it as such; default is `true`
 * `node['chef_vault_retry']['gem_source']` - maps to the `source` property for the `chef_gem` resource; default is `nil`
 * `node['chef_vault_retry']['gem_options']` - maps to the `options` property for the `chef_gem` resource; default is `nil`
 
 ## Usage
 
-Include the `chef_vault_retry::default` recipe before using the helper method in recipes:
+For Chef 12 nodes, include the `chef_vault_retry::default` recipe in the node's run list before using the helper method in recipes. For newer Chef versions, the `chef-vault` gem is installed by default and this step can be skipped.
+
+Load a secret from a chef-vault item:
 
 ```
-include_recipe 'chef_vault_retry::default'
 secret = chef_vault_retry_item('vault', 'item')
 ```
 

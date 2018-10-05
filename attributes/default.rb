@@ -2,7 +2,7 @@
 # Cookbook:: chef_vault_retry
 # Attributes:: default
 #
-# Copyright:: 2017, Biola University
+# Copyright:: 2018, Biola University
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-default['chef_vault_retry']['version'] = '~> 2.6'
+default['chef_vault_retry']['version'] = nil
 default['chef_vault_retry']['databag_fallback'] = true
 default['chef_vault_retry']['gem_source'] = nil
 default['chef_vault_retry']['gem_options'] = nil

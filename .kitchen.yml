@@ -4,6 +4,7 @@ driver:
 
 provisioner:
   name: chef_zero
+  product_name: chef
 
 verifier:
   name: inspec
@@ -12,6 +13,29 @@ platforms:
   - name: ubuntu-16.04
 
 suites:
-  - name: default
+  - name: chef12
+    provisioner:
+      product_version: 12
     run_list:
       - recipe[test::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+
+  - name: chef13
+    provisioner:
+      product_version: 13
+    run_list:
+      - recipe[test::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+
+  - name: chef14
+    provisioner:
+      product_version: 14
+    run_list:
+      - recipe[test::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
